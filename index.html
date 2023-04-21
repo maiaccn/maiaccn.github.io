@@ -1,68 +1,48 @@
-
-
-
-
-<!DOCTYPE html>
-<html lang="zh-Hans-CN">
-<head>
-<title>&#12300;自言自语&#12301;</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="description" content="M">
-<meta name="keywords" content="">
-<link rel="dns-prefetch" href="https://mai.ac.cn">
-<link rel="mask-icon" href="https://mai.ac.cn/safari-pinned-tab.svg" color="#616161">
-<link rel="apple-touch-icon" sizes="180x180" href="https://mai.ac.cn/icon.png">
-<link rel="stylesheet" href="https://mai.ac.cn/styles/css/style.css">
-<link rel="stylesheet" href="https://mai.ac.cn/styles/css/footer.css">
-<link rel="shortcut icon" type="image/png" href="https://mai.ac.cn/favicon.png"> 
-<link rel="icon" type="image/png" href="https://mai.ac.cn/favicon.png" sizes="16x16">
-<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-<script src="https://mai.ac.cn/styles/js/jquery.min.js"></script>
-<script src="https://mai.ac.cn/styles/js/typed.js"></script>
-<script src="https://mai.ac.cn/styles/js/hitokoto.js"></script>
-<script src="edu.js"></script>
-</head>
-<body lang="zh-Hans-CN" class="back">
-<div class="page"> 
-<div class="container">
-  <div class="jumbotron text-center">
-	  <h4 class=" text-index"><a href="https://mai.ac.cn/cn/" arget="_blank">&#12300;2023 年普通高等学校招生全国统一考试&#12301;</a>
-	  </h4> 
-    <div class="text-index">
-	<h4 class="star-max"></h4>
-    </div>
-	<span id="p" class="text-index" ></span>
-  </div>
-  
-	 <!-- div 
-  <div class="row">
-    <div class="col-sm-4">
-      
-    </div>
-    <div class="col-sm-4">
-     
-    </div>
-    <div class="col-sm-4">
-    
-    </div>
-  </div>
--->
-</div>
-</div>
-    <div class="text-center">
-	<footer>
-	<header >
-	</header>
-	<div class="text-footer">
-		<script src="https://mai.ac.cn/styles/js/time.js"></script>
-	
-	</div>
-	</footer>
-    </div>
-</body>
+<html>
+    <head>
+        <title>Timer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=5.0">
+        <style>
+            a {
+                text-decoration: none;
+                color: #4D4D4D;
+            }
+        </style>
+    </head>
+    <body style="margin-top:20%;">
+        <center>
+            <h1 style="font-weight: normal;">2023 年普通高等学校招生全国统一考试</h1>
+            <h2 style="font-weight: 200;" id="p"></h2>
+            <small>Copyright © TO.AC.CN</small>
+        </center>
+        <script>
+            function tow(n) {
+                return n >= 0 && n < 10 ? '0' + n : '' + n;
+            }
+            function getDate() {
+                var oDate = new Date();
+                var oldTime = oDate.getTime();
+                var newDate = new Date('2023/6/7 09:00:00');
+                var newTime = newDate.getTime();
+                if(newTime <= oldTime){
+                    document.getElementById("p").innerHTML = '已经开始';
+                    return;
+                }
+                var second = Math.floor((newTime - oldTime) / 1000);
+                var day = Math.floor(second / 86400);
+                second = second % 86400;
+                var hour = Math.floor(second / 3600);
+                second %= 3600;
+                var minute = Math.floor(second / 60);
+                second %= 60;
+                var str = '仅剩 ' + tow(day) + ' 天 ' + tow(hour) + ' 小时 '
+                    + tow(minute) + ' 分钟 '
+                    + tow(second) + ' 秒 ';
+                document.getElementById("p").innerHTML = str;
+            }
+            getDate();
+            setInterval(getDate, 500);
+        </script>
+    </body>
 </html>
